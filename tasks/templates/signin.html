@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<main class="container   ">
+    <div class="row">
+       <div class="col-md-4 offset-md-4 mt-5">
+            <form method="POST" class="card card-body text-center">
+                 <h1 class="text-center mt-4">login</h1>
+            <!-- Esta línea muestra que esta página es para registrarse. -->
+            
+            {{error}}
+            <!-- Si hay algún error (por ejemplo, en el formulario), este mensaje de error se mostrará en este lugar. 
+             -->
+            
+            <!-- Aquí comienza un formulario que se enviará mediante el método POST a la URL "/signup/". 
+                 El método POST se usa para enviar datos de manera segura al servidor. -->
+              
+                {% csrf_token %}
+                <!-- Esta línea genera un token de seguridad  -->
+            
+              <div class="mb3 ">
+                 <label for="username">usuario</label>
+                 <input type="text" name="username" id="username"  class="form-control" placeholder="Escribe tu usuario">
+              </div>
+              <div class="mb3">
+                 <label for="password">contraseña:</label>
+                 <input type="password" name="password" id="password"  class="form-control" placeholder="Escribe tu contraseña">
+              </div>
+          
+              
+  
+                <!-- Esta línea genera automáticamente el formulario de Django (por ejemplo, los campos de entrada de texto) en formato de párrafos. 
+                     La variable "form" contiene el formulario que se pasa desde la vista de Django. -->
+            
+                <button class="btn btn-primary mt-2">
+                    Iniciar
+                </button>
+            
+            </form>
+       </div>
+    </div>
+       
+  </main>
+
+
+
+{% endblock %}          
+

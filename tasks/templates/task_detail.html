@@ -1,0 +1,35 @@
+{% extends 'base.html' %} <!-- Hereda la estructura y estilos de la plantilla base.html -->
+
+{% block content %} <!-- Define un bloque de contenido que se insertará en base.html -->
+
+<div class="main container mt-4">
+    <div class="row">
+        <div class="col-md-5 offset-md-4">
+            <h1 class="title-secundary">{{ task.title }}</h1> <!-- Muestra el título de la tarea de forma dinámica -->
+            <!-- Actualiza tarear-->
+            {{error}}
+
+            <form method="POST">
+                {% csrf_token %}
+                {{form.as_p}}
+                <button class="btn btn-success ">Actualizar</button>
+            </form>
+
+            <div class="mt-5 d-flex">
+                <form action="{% url 'complete_task' task.id %}" method="POST">
+                    <!-- Declarar tarea completa -->
+                    {% csrf_token %}
+                    <button class="btn btn-primary ">Complete</button>
+                </form>
+
+                <form action="{% url 'delete_task' task.id %}" method="POST">
+                    <!--Eliminar tarea -->
+                    {% csrf_token %}
+                    <button class="btn btn-danger ">Eliminar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %} <!-- Cierra el bloque de contenido -->
