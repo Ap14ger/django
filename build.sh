@@ -1,11 +1,11 @@
-#!/bin/bash
-set -o errexit  # Hace que el script falle si hay algún error.
+# Exit on error
+set -o errexit
 
-# Instalar dependencias
+# Modify this line as needed for your package manager (pip, poetry, etc.)
 pip install -r requirements.txt
 
-# Recopilar archivos estáticos
+# Convert static asset files
 python manage.py collectstatic --no-input
 
-# Ejecutar migraciones de base de datos
+# Apply any outstanding database migrations
 python manage.py migrate
